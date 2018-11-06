@@ -1,0 +1,70 @@
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+
+  .input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: center;
+    width: auto;
+  }
+</style>
+
+<div class="container">
+
+  <form>
+    <%= form_with model: @stock, local: true do |form| %>
+
+      <% if @stock.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@stock.errors.count, "error") %> prohibited
+            this stock from being saved:
+          </h2>
+          <ul>
+            <% @stock.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+
+      <div class="input-group">
+        <lable class="field">
+          <%= form.label :name %><br>
+          <%= form.text_field :name %>
+        </lable>
+      </div>
+
+      <div class="input-group">
+        <label class="field">
+          <%= form.label :unit_price %><br>
+          <%= form.text_field :unit_price %>
+        </label>
+      </div>
+
+      <div class="input-group">
+        <label class="field">
+          <%= form.label :interest %><br>
+          <%= form.text_field :interest %>
+        </label>
+      </div>
+
+      <div class="input-group">
+        <label class="field">
+          <%= form.label :duration_in_years %><br>
+          <%= form.text_field :duration_in_years %>
+        </label>
+      </div>
+
+      <p class="button">
+        <%= form.submit "Edit Stock" %>
+      </p>
+    <% end %>
+  </form>
+</div>

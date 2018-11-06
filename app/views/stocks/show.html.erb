@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="form">
+    <h2 class="title">Stock: <%= @stock.name %></h2>
+
+    <p>
+      <strong>User: </strong>
+      <%= @stock.user.name %>
+    </p>
+
+    <p>
+      <strong>Unit price:</strong>
+      <%= @stock.unit_price.to_i %>
+    </p>
+
+    <p>
+      <strong>Interest:</strong>
+      <%= @stock.interest.to_i %>
+    </p>
+
+    <p>
+      <strong>Duration in years:</strong>
+      <%= @stock.duration_in_years.to_i %>
+    </p>
+
+    <p>
+      <strong>Mark:</strong>
+      <%= @array.last %>
+    </p>
+
+
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <script>
+        var ctx = document.getElementById("myChart").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: <%= (0..@stock.duration_in_years).map {|i| i }.inspect %>,
+                datasets: [{
+                    label: 'Stocks',
+                    data: <%= @array.inspect %>,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255,99,132,1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero:true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+  </div>
+</div>
+
