@@ -6,8 +6,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: localhost
   port: 5432
-  username: test
-  password:
+
 development:
   <<: *default
   database: my_database_development
@@ -18,6 +17,6 @@ test:
 
 production:
   <<: *default
-   database: my_database_prod
+  database: my_database_prod
   username: railstest
   password: <%= ENV['RAILSTEST_DATABASE_PASSWORD'] %>
