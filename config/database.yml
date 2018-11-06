@@ -16,8 +16,8 @@ test:
   <<: *default
   database: my_database_test
 
-
 production:
   <<: *default
-    username: railstest
-    password: <%= ENV['RAILSTEST_DATABASE_PASSWORD'] %>
+   database: my_database_prod
+  username: railstest
+  password: <%= ENV['RAILSTEST_DATABASE_PASSWORD'] %>
